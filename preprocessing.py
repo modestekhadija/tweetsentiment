@@ -72,7 +72,17 @@ def vectorisation(tweet, model_vectors=lemm_w2v_vectors, size=100):
 
 def predict_text(tweet):
     cleaned_tweet = clean(tweet)
-    input_data = vectorisation(cleaned_tweet)
-    prediction = log_regression.predict(input_data)
+    if cleaned_tweet == '':
+        sentiment = "NEUTRAL"
+    else:
+        input_data = vectorisation(cleaned_tweet)
+        prediction = log_regression.predict(input_data)
+        if prediction==1:
+            sentiment = 'POSITIVE'
+        else:
+            sentiment == 'NEGATIVE'
     
-    return 'NEGATIVE' if prediction==0 else 'POSITIVE'
+    return sentiment
+
+tweet = 'i am'
+print(predict_text(tweet))
