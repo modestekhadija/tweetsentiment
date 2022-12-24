@@ -39,7 +39,7 @@ def clean(text):
 
 
 # Vectoriser un token avec word2vec
-def word_vector(token, model_vectors, size=200):
+def word_vector(token, model_vectors, size=100):
 
     vec = np.zeros(size).reshape((1, size))
     count = 0
@@ -56,7 +56,7 @@ def word_vector(token, model_vectors, size=200):
     return vec
 
 # Text vectorisation
-def vectorisation(tweet, model_vectors=lemm_w2v_vectors, size=200):
+def vectorisation(tweet, model_vectors=lemm_w2v_vectors, size=100):
     print('Tokenisation ...')
     sentence = gensim.utils.simple_preprocess(tweet)
 
